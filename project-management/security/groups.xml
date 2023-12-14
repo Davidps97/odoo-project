@@ -11,4 +11,7 @@
     <record id="group_programmer" model="res.groups">
         <field name="name">Programmer</field>
     </record>
+    <record id="base.user_admin" model="res.users">
+        <field name="groups_id" eval="[(4,ref('group_administrator'))]"></field>
+    </record>
 </odoo>
