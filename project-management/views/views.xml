@@ -1,0 +1,77 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="hire_company_tree">
+      <field name="name">hire_company.tree</field>
+      <field name="model">hire_company</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_project_modify">
+      <field name="name">project.project.modify</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project"/>
+      <field name="arch" type="xml">
+        <field name="user_id" position="after">
+          <field name="hire_company_id"/>
+        </field>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_hire_company_form">
+      <field name="name">hire_company.form</field>
+      <field name="model">hire_company</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="projects">
+                <tree>
+                  <field name="name"/>
+                </tree>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="hire_company_action_window">
+      <field name="name">Hire Company</field>
+      <field name="res_model">hire_company</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="project_action_window">
+      <field name="name">Projects</field>
+      <field name="res_model">project.project</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="task_action_window">
+      <field name="name">Tasks</field>
+      <field name="res_model">project.task</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Hire Company Management" id="menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Hire Company Management" id="hire_company_management" parent="menu_root"/>
+    <menuitem name="Hire Companies" id="menu_hire_company" parent="menu_root" action="hire_company_action_window"/>
+    <menuitem name="Projects" id="menu_project" parent="menu_root" action="project_action_window"/>
+    <menuitem name="Tasks" id="menu_task" parent="menu_root" action="task_action_window"/>
+
+  </data>
+</odoo>

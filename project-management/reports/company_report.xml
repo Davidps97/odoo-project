@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.report" id="hire_company_report">
+            <field name="name">Company Projects</field>
+            <field name="model">hire_company</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">project-management.hire_company_report_template</field>
+            <field name="report_file">project-management.hire_company_report_template</field>
+            <field name="binding_model_id" ref="model_hire_company"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
